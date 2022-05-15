@@ -1,0 +1,33 @@
+﻿@model Pharmavite_Saja.Models.PharmaviteCategory
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout_admin.cshtml";
+}
+<div class="col-md-8 d-block m-auto">
+    <div class="card">
+        <div class="card-header">
+            <h5 class="title">Edit Product</h5>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-5">
+                    @Html.DisplayNameFor(model => model.CategoryImg)
+                </dt>
+                <dd class="col-sm-7">
+                    <img src="@Html.DisplayFor(model => model.CategoryImg)" alt="Alternate Text" />  
+                </dd>
+                <dt class="col-sm-5">
+                    @Html.DisplayNameFor(model => model.CategoryName)
+                </dt>
+                <dd class="col-sm-7">
+                    @Html.DisplayFor(model => model.CategoryName)
+                </dd>
+            </dl>
+        </div>
+        <div>
+            <a asp-action="Edit" asp-route-id="@Model.CategoryId">Edit</a> |
+            <a asp-controller="Dashbord" asp-action="Index">Back to List</a>
+        </div>
+    </div>
+</div>

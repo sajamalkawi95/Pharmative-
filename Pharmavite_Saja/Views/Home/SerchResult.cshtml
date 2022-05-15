@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Pharmavite_Saja.Models.PharmaviteCategory>
+@{
+    ViewData["Title"] = "SerchResult";
+    Layout = "~/Views/Shared/_web_Layout.cshtml";
+}
+
+
+<section id="clients">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="subtitle text-center wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay=".3s">
+                    Our
+                    Happy Clinets
+                </h2>
+                
+                <div id="clients-logo" class="clients-logo-slider">
+                    @foreach (var item in Model)
+                    {
+                    <div>
+                        <p class="subtitle-des text-center wow fadeInUp animated  " data-wow-duration="500ms" data-wow-delay=".5s">
+                            @item.CategoryName
+                        </p>
+
+                        <a asp-action="Products" asp-route-id="@item.CategoryId">
+                            <img class="img-fluid mx-2" src="/CategoryImages/@item.CategoryImg" alt="">
+                        </a>
+                    </div>
+                    }
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

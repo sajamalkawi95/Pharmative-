@@ -1,0 +1,108 @@
+﻿@model Tuple<
+        List<Pharmavite_Saja.Models.PharmaviteProductCart>
+        , List<Pharmavite_Saja.Models.PharmaviteOrder>
+        , List<Pharmavite_Saja.Models.PharmaviteProduct>
+  >
+
+
+@{
+    Layout = "~/Views/Shared/_web_Layout.cshtml";
+}
+
+<link href="~/css/cart.css" rel="stylesheet" />
+<section class="cart_wrapper">
+    <div class="cart_lists">
+        <div class="cart_title">
+            <span class="material-icons-outlined"></span>
+            Your Shopping Cart
+        </div>
+
+        <div class="cart_list_wrap">
+            <div class="cart_responsive">
+                @{ double total = 0;}
+                @foreach (var cart in Model.Item1)
+                {
+                    var order =  Model.Item2.Find(e => e.OrderId == cart.OrderIdfk);
+                    var product = Model.Item3.Where(e => e.ProductId == cart.ProductIdfk).FirstOrDefault();
+                  
+                    total += (double)product.Price *    3 ;
+
+
+
+                    <div class="tr_item">
+                        <div class="td_item item_img">
+                            <img src="/CategoryImages/@product.Productimg" />
+                        </div>
+                        <div class="td_item item_name">
+                            <label class="main"> @product.ProductName</label>
+                            <label class="sub">Ref. 007891987</label>
+                        </div>
+                        <div class="td_item item_qty">
+                        3
+                        </div>
+                        <div class="td_item item_price">
+                            <label>$ @product.Price</label>
+                        </div>
+                        <div class="td_item item_price">
+                            <label>$ @(product.Price * 3)</label>
+                        </div>
+                        <div class="td_item item_remove">
+                            <span class="material-icons-outlined">close</span>
+                        </div>
+                    </div>
+
+                }
+
+            </div>
+
+
+
+
+
+            @*/////////////////////////////////////////////*@
+            <div class="footer">
+                <div class="back_cart">
+                    <a asp-action="Products" asp-route-id="-1">
+                        <span class="material-icons-outlined">west</span>
+                        Back to Shop
+                    </a>
+                </div>
+                <div class="subtotal">
+                    <label>total: </label>
+                    <strong>$ @total </strong>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="cart_details">
+        <div class="cart_title">
+            Cart Details
+        </div>
+        @{ var id = Model.Item2.FirstOrDefault() != null ? Model.Item2.FirstOrDefault().UserIdfk : -1;
+
+        }
+        @*/////.UserIdfk == null ? 0000 : Model.Item2.FirstOrDefault().UserIdfk;*@
+    <form class="form_row" asp-action="Checkout">
+        
+            <input type="hidden" class="input" id="userId" name='userId' value="@id" required />
+       
+            <input type="hidden" class="input" id="total" name='total' value="@total" required />
+        @if (@ViewData["Msg"] != null)
+        {
+    <div class="alert alert-danger alert-common" role="alert">
+        <i class="tf-ion-close-circled"></i>
+        <span>Warning!</span>  @ViewData["Msg"]
+    </div>
+
+        }
+
+        <div class="form_group">
+            <label class="input_label">Card Number</label>
+            <input type="text" class="input" id="card_number" name='card_number' required />
+        </div>
+
+        <button type="submit" class="btn">Checkout</button>
+    </form>
+
+    </div>
+</section>

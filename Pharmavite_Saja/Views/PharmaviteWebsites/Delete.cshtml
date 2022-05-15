@@ -1,0 +1,84 @@
+﻿@model Pharmavite_Saja.Models.PharmaviteWebsite
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>PharmaviteWebsite</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.WebsiteName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.WebsiteName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.WebsiteLogo1)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.WebsiteLogo1)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.WebsiteLogo2)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.WebsiteLogo2)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.WebsiteHeroimg)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.WebsiteHeroimg)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.WebsiteWallet)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.WebsiteWallet)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.WebsiteHeroimg2)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.WebsiteHeroimg2)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.WebsiteHeroimg3)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.WebsiteHeroimg3)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.WebsiteDesc)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.WebsiteDesc)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UserAdminfkNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UserAdminfkNavigation.UserId)
+        </dd class>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="IdPharmavite" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>
+</body>
+</html>

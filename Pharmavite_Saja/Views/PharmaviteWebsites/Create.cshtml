@@ -1,0 +1,78 @@
+﻿@model Pharmavite_Saja.Models.PharmaviteWebsite
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+
+<h4>PharmaviteWebsite</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="WebsiteName" class="control-label"></label>
+                <input asp-for="WebsiteName" class="form-control" />
+                <span asp-validation-for="WebsiteName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WebsiteLogo1" class="control-label"></label>
+                <input asp-for="WebsiteLogo1" class="form-control" />
+                <span asp-validation-for="WebsiteLogo1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WebsiteLogo2" class="control-label"></label>
+                <input asp-for="WebsiteLogo2" class="form-control" />
+                <span asp-validation-for="WebsiteLogo2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WebsiteHeroimg" class="control-label"></label>
+                <input asp-for="WebsiteHeroimg" class="form-control" />
+                <span asp-validation-for="WebsiteHeroimg" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserAdminfk" class="control-label"></label>
+                <select asp-for="UserAdminfk" class ="form-control" asp-items="ViewBag.UserAdminfk"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="WebsiteWallet" class="control-label"></label>
+                <input asp-for="WebsiteWallet" class="form-control" />
+                <span asp-validation-for="WebsiteWallet" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WebsiteHeroimg2" class="control-label"></label>
+                <input asp-for="WebsiteHeroimg2" class="form-control" />
+                <span asp-validation-for="WebsiteHeroimg2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WebsiteHeroimg3" class="control-label"></label>
+                <input asp-for="WebsiteHeroimg3" class="form-control" />
+                <span asp-validation-for="WebsiteHeroimg3" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WebsiteDesc" class="control-label"></label>
+                <input asp-for="WebsiteDesc" class="form-control" />
+                <span asp-validation-for="WebsiteDesc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,108 @@
+﻿@model List<PharmaviteProduct>
+@{
+    Layout = "/Views/Shared/_web_Layout.cshtml";
+ 
+
+}
+
+<section class="page-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="content">
+                    <h1 class="page-name">Shop</h1>
+                    <ol class="breadcrumb">
+                        <li><a asp-action="Index">Home</a></li>
+                        <li class="active">shop</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="products section">
+    <div class="container" style="width: 1250px">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="widget">
+                    <h4 class="widget-title">Short By</h4>
+                    <form method="post" action="#">
+                        <select class="form-control">
+                            <option>Man</option>
+                            <option>Women</option>
+                            <option>Accessories</option>
+                            <option>Shoes</option>
+                        </select>
+                    </form>
+                </div>
+                <div class="widget product-category">
+                    <h4 class="widget-title">Categories</h4>
+
+
+
+                    <div class="panel-group commonAccordion" id="accordion" role="tablist" aria-multiselectable="true">
+                        @foreach (var c in ViewBag.Category)
+                        {<div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="headingOne">
+                                    <h4 class="panel-title">
+                                        <a role="button" asp-action="Products" asp-route-id="@c.CategoryId">
+                                            @c.CategoryName
+                                        </a>
+                                    </h4>
+                                </div>
+                            </div>
+
+                        }
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-9">
+                @if ((string)@TempData["UserName"] == "non")
+                {
+
+                <div class="alert alert-info alert-common" role="alert">
+                    <i class="tf-ion-android-checkbox-outline"></i><span>Warning!</span>
+                    Please log in to Order midecines
+                </div>                 
+                }
+
+
+                <div class="row">
+                    @foreach (var item in Model)
+                    {   <div class="col-md-4">
+                            <div class="product-item">
+                                <div class="product-thumb">
+                                    <span class="bage">Sale</span>
+                                    <img class="img-responsive" src="/CategoryImages/@item.Productimg" alt="product-img" />
+                                    <div class="preview-meta">
+                                        <ul>
+                                            <li>
+                                                <a asp-action="Order" asp-route-id="@item.ProductId">
+                                                    <span data-toggle="modal" data-target="#product-modal">
+                                                        <i class="tf-ion-ios-search-strong"></i>
+                                                    </span>
+                                                </a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="product-content">
+                                    <h4><a href="product-single.html">@item.ProductName</a></h4>
+                                    <p class="price">$  @item.Price</p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+

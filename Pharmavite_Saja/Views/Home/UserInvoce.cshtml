@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Pharmavite_Saja.Models.FinReport>
+@{
+    ViewData["Title"] = "User Invoice";
+    Layout = "~/Views/Shared/_web_Layout.cshtml";
+}
+<link href="/css/invoice.css" rel="stylesheet" />
+<div class="row">
+    <div class="invoice-card">
+        <div class="invoice-title">
+            <div id="main-title">
+                <h4>INVOICE</h4>
+                <span>#89 292</span>
+            </div>
+            
+            <span id="date"> @DateTime.Today</span>
+        </div>
+
+        <div class="invoice-details">
+            <table class="invoice-table">
+                <thead>
+                    <tr>
+                        <td>PRODUCT</td>
+                        <td>UNIT</td>
+                        <td>PRICE</td>
+                    </tr>
+                </thead>
+                @{  double total = 0;}
+                <tbody>
+                    @foreach (var fin in Model)
+                    {
+                        total += (double) (fin.ProductOrderQty * fin.ProductPrice);
+                         <tr class="row-data">
+                            <td> @fin.ProductName </td>
+                            <td id="unit"> @fin.ProductOrderQty</td>
+                            <td> @fin.ProductPrice</td>
+                        </tr>
+                    }
+
+                    <tr class="calc-row">
+                        <td colspan="2">Total</td>
+                        <td>@total</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="invoice-footer">
+            <button class="btn btn-secondary" id="later" asp-action="Index" asp-controller="Home">Back</button>
+         </div>
+    </div>
+</div>

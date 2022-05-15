@@ -1,0 +1,87 @@
+﻿@model Pharmavite_Saja.Models.PharmaviteUser
+
+@{
+    ViewData["Title"] = "Add Employee";
+    Layout = "~/Views/Shared/_Layout_admin.cshtml";
+}
+
+<div class="row">
+
+
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="title">Add Employee</h5>
+            </div>
+            <div class="card-body">
+                <form asp-action="Create" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="row">
+                        <div class="col-md-10 m-auto">
+                            <div class="form-group">
+ 
+                                <input id="UserName" type="text" name="UserName" placeholder="Full Name" class="form-control badge-secondary border-left-0 border-md"
+                                       asp-for="UserName" />
+                                <span asp-validation-for="UserName" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-10 m-auto">
+                            <div >
+                                <label for="ImageFile" class="form-label"></label>
+                                <input asp-for="ImageFile" type="file" name="ImageFile" class="form-control badge-secondary border-left-0 border-md">
+                                <span asp-validation-for="ImageFile" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-10 m-auto">
+                            <div class="form-group">
+                                <input id="PhoneNumber" type="text" name="PhoneNumber" placeholder="Phone Number" class="form-control badge-secondary    border-left-0 border-md"
+                                       asp-for="PhoneNumber" />
+                                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-10 m-auto">
+                            <div class="form-group">
+                                <input id="Email" type="email" name="Email" placeholder="Email..." class="form-control  badge-secondary border-left-0 border-md"
+                                       asp-for="Email" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-10 m-auto">
+                            <div class="form-group">
+                                <input id="Bod" type="date" name="Bod" class="form-control badge-secondary border-left-0 border-md" max="2005-1-1"
+                                       asp-for="Bod" />
+                                <span asp-validation-for="Bod" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-10 m-auto">
+                            <div class="form-group">
+                                <input id="Address" type="text" name="Address" placeholder="Address..." class="form-control badge-secondary border-left-0 border-md"
+                                       asp-for="Address" />
+                                <span asp-validation-for="Address" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-10 m-auto">
+                            <div class="form-group">
+                                <input id="Password" type="Password" name="Password" placeholder="Password..." class="form-control badge-secondary border-left-0 border-md"
+                                       asp-for="Password" />
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-10 m-auto">
+                            <div class="form-group">
+                                <input type="submit" value="Create" class="font-weight-bold btn btn-outline-success btn-block py-2" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<div class="row">
+    <a asp-action="">Back to Dashbord</a>
+</div>

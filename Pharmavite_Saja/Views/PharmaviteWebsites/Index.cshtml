@@ -1,0 +1,91 @@
+﻿@model IEnumerable<Pharmavite_Saja.Models.PharmaviteWebsite>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.WebsiteName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WebsiteLogo1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WebsiteLogo2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WebsiteHeroimg)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WebsiteWallet)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WebsiteHeroimg2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WebsiteHeroimg3)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WebsiteDesc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserAdminfkNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.WebsiteName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WebsiteLogo1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WebsiteLogo2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WebsiteHeroimg)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WebsiteWallet)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WebsiteHeroimg2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WebsiteHeroimg3)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WebsiteDesc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserAdminfkNavigation.UserId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdPharmavite">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdPharmavite">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdPharmavite">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</body>
+</html>

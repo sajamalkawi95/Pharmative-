@@ -1,0 +1,120 @@
+﻿@model Tuple<Pharmavite_Saja.Models.PharmaviteWebsite , 
+    Pharmavite_Saja.Models.PharmaviteAbouteU,
+    Pharmavite_Saja.Models.PharmativeContact>
+@{
+      Layout="~/Views/Shared/_Layout_admin.cshtml" ;
+}
+
+ 
+ 
+
+<h4>PharmaviteWebsite</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-controller="PharmaviteWebsites" asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="@Model.Item1.IdPharmavite" />
+            <div class="form-group">
+                <label asp-for="@Model.Item1.WebsiteName" class="control-label"></label>
+                <input asp-for="@Model.Item1.WebsiteName" class="form-control" />
+                <span asp-validation-for="@Model.Item1.WebsiteName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Item1.LogoFile" class="control-label"></label>
+                <input asp-for="@Model.Item1.LogoFile" type="file" />
+                <span asp-validation-for="@Model.Item1.WebsiteLogo1" class="text-danger"></span>
+            </div>
+  
+            <div class="form-group">
+                <label asp-for="@Model.Item1.HeroFile" class="control-label"></label>
+                <input asp-for="@Model.Item1.HeroFile" />
+                <span asp-validation-for="@Model.Item1.WebsiteHeroimg" class="text-danger"></span>
+            </div>
+      <div class="form-group">
+        <label asp-for="@Model.Item1.UserAdminfk" hidden class="control-label"></label>
+            <select asp-for="@Model.Item1.UserAdminfk" hidden class="form-control" asp-items="ViewBag.UserAdminfk"></select>
+              <span asp-validation-for="@Model.Item1.UserAdminfk" class="text-danger"></span>
+        </div>
+            @*<div class="form-group">
+                <label asp-for="@Model.Item1.WebsiteWallet" class="control-label"></label>
+                <input asp-for="@Model.Item1.WebsiteWallet" class="form-control" />
+                <span asp-validation-for="@Model.Item1.WebsiteWallet" class="text-danger"></span>
+            </div>*@
+        <div class="form-group">
+            <label asp-for="@Model.Item1.HeroFile2" class="control-label"></label>
+            <input asp-for="@Model.Item1.HeroFile2" class="form-control" />
+            <span asp-validation-for="@Model.Item1.HeroFile2" class="text-danger"></span>
+        </div>
+         <div class="form-group">
+            <label asp-for="@Model.Item1.HeroFile3" class="control-label"></label>
+            <input asp-for="@Model.Item1.HeroFile3" class="form-control" />
+            <span asp-validation-for="@Model.Item1.HeroFile3" class="text-danger"></span>
+        </div>
+            <div class="form-group">
+                <label asp-for="@Model.Item1.WebsiteDesc" class="control-label"></label>
+                <input asp-for="@Model.Item1.WebsiteDesc" class="form-control" />
+                <span asp-validation-for="@Model.Item1.WebsiteDesc" class="text-danger"></span>
+            </div>
+
+            @*///////////////////////////*@
+
+            <input type="hidden" asp-for="@Model.Item2.AbouteId" />
+            <div class="form-group">
+                <label asp-for="@Model.Item2.Aboute1" class="control-label"></label>
+                <input asp-for="@Model.Item2.Aboute1" class="form-control" />
+                <span asp-validation-for="@Model.Item2.Aboute1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Item2.Aboute2" class="control-label"></label>
+                <input asp-for="@Model.Item2.Aboute2" class="form-control" />
+                <span asp-validation-for="@Model.Item2.Aboute2" class="text-danger"></span>
+            </div>
+        
+            @*/////////////////////////////*@
+
+
+            <input type="hidden" asp-for="@Model.Item3.ContactId" />
+            <div class="form-group" hidden>
+                <label asp-for="@Model.Item3.WebsiteIdfk" class="control-label"></label>
+                <select asp-for="@Model.Item3.WebsiteIdfk" class="form-control" asp-items="ViewBag.WebsiteIdfk"></select>
+                <span asp-validation-for="@Model.Item3.WebsiteIdfk" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Item3.PhoneNumber" class="control-label"></label>
+                <input asp-for="@Model.Item3.PhoneNumber" class="form-control" />
+                <span asp-validation-for="@Model.Item3.PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Item3.Email" class="control-label"></label>
+                <input asp-for="@Model.Item3.Email" class="form-control" />
+                <span asp-validation-for="@Model.Item3.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Item3.FbAccaunt" class="control-label"></label>
+                <input asp-for="@Model.Item3.FbAccaunt" class="form-control" />
+                <span asp-validation-for="@Model.Item3.FbAccaunt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Item3.LiAccaunt" class="control-label"></label>
+                <input asp-for="@Model.Item3.LiAccaunt" class="form-control" />
+                <span asp-validation-for="@Model.Item3.LiAccaunt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Item3.InstaAccaunt" class="control-label"></label>
+                <input asp-for="@Model.Item3.InstaAccaunt" class="form-control" />
+                <span asp-validation-for="@Model.Item3.InstaAccaunt" class="text-danger"></span>
+            </div>
+
+            @* *********************************** *@
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

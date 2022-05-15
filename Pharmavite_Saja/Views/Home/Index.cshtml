@@ -1,0 +1,320 @@
+﻿@model Tuple<
+  Pharmavite_Saja.Models.PharmaviteWebsite,
+  List<Pharmavite_Saja.Models.PharmaviteCategory>,
+  Pharmavite_Saja.Models.PharmaviteAbouteU,
+ List<Pharmavite_Saja.Models.PharmaviteTestimonial>,
+ Pharmavite_Saja.Models.PharmativeContact,
+ List<Pharmavite_Saja.Models.PharmaviteProduct>,
+ List<Pharmavite_Saja.Models.PharmaviteTestimonial>
+ >
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_web_Layout.cshtml";
+}
+<!-- Ionic Icons -->
+<script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+<script>
+
+
+   var viewBagId =   @TempData["id"];
+
+    if (typeof viewBagId === 'undefined' || viewBagId === null || viewBagId === '') {
+        console.log('variable is undefined or null')
+         var url = '@Url.Action("Login", "LoginandRegistration")'
+        window.location.href = url;
+    }
+
+</script>
+
+
+
+
+<div class="hero-slider">
+    <div class="slider-item th-fullpage hero-area" style="background-image:url(@Url.Content("/website-assets/images/slider/pharmacist4.jpg")">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 text-center">
+                    <h1 data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".2">Find the right care right when you need it</h1>
+                    <p data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".7">Start by choosing for visit</p>
+                    <p data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in="1.2">and we'll help you find the right care.</p>
+                    <a data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in="2.2" class="btn d-block" asp-action="products">Shop Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slider-item th-fullpage hero-area" style="background-image:url(@Url.Content("/website-assets/images/slider/pharmacist4.jpg")">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 text-center">
+                    <h1 data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".2">Find the right care right when you need it</h1>
+                    <p data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".7">Start by choosing for visit</p>
+                    <p data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in="1.2">and we'll help you find</p>
+                    <p data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in="1.7"> the right care.</p>
+                    <a data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in="2.2" class="btn d-block" asp-action="products">Shop Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slider-item th-fullpage hero-area" style="background-image:url(@Url.Content("/website-assets/images/slider/pharmacist4.jpg")">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 text-center">
+                    <h1 data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".2">Find the right care right when you need it</h1>
+                    <p data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".7">Start by choosing for visit</p>
+                    <p data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in="1.2">and we'll help you find</p>
+                    <p data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in="1.7"> the right care.</p>
+                    <a data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in="2.2" class="btn d-block" asp-action="products">Shop Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slider-item th-fullpage hero-area" style="background-image:url(@Url.Content("/website-assets/images/slider/pharmacist4.jpg")">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 text-center">
+                    <h1 data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".2">Find the right care right when you need it</h1>
+                    <p data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".7">Start by choosing for visit</p>
+                    <p data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in="1.2">and we'll help you find</p>
+                    <p data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in="1.7"> the right care.</p>
+                    <a data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in="2.2" class="btn d-block" asp-action="products">Shop Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<section class="product-category section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="title text-center">
+                    <h2>Product Category</h2>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="category-box">
+                    <a asp-action="Products" asp-route-id="61">
+                        <img src="~/CategoryImages/@Model.Item2[0].CategoryImg" alt="" />
+                        <div class="content">
+                            <h3>@Model.Item2[0].CategoryName</h3>
+
+                        </div>
+                    </a>
+                </div>
+                <div class="category-box">
+                    <a asp-action="Products" asp-route-id="64">
+                        <img src="~/CategoryImages/@Model.Item2[2].CategoryImg" alt="" />
+                        <div class="content">
+                            <h3>@Model.Item2[2].CategoryName</h3>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="category-box category-box-2">
+                    <a asp-action="Products" asp-route-id="63">
+                        <img src="~/CategoryImages/@Model.Item2[1].CategoryImg" alt="" />
+                        <div class="content">
+                            <h3>@Model.Item2[1].CategoryName</h3>
+                        </div>
+                    </a>
+                </div>
+                <div>
+                    <a asp-action="Products" asp-route-id="0">
+                        <div class="content">
+                            <h3>Shop ALL Categories</h3>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<section class="product-category section">
+    <div class="title text-center">
+        <h2>Who We Are </h2>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <img class="img-responsive" src="https://image.freepik.com/free-photo/two-people-lab-coats-feeling-good-smiling_259150-57970.jpg">
+            </div>
+            <div class="col-md-6">
+                <h2 class="mt-40">What We Do</h2>
+                is an official supplier of the medical products. We work together with the
+
+                international pharmaceutical companies that supply licensed medications
+                all over the world. We have achieved the wholesale prices for medications by means
+                of the direct collaboration with manufacturers, and it has helped our customers to
+                save money (more than 100% from initial cost of the drugs)
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+
+<section class="product-category section">
+    <div class="container">
+        <div class="row">
+            <div class="title"><h2>Team Members</h2></div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="team-member text-center">
+                    <img class="img-circle" width="200" height="200" src="https://image.freepik.com/free-photo/covid-19-preventing-virus-health-healthcare-workers-quarantine-concept-professional-female-nurse-doctor-blue-scrubs-medical-mask-gloves-writing-down-patient-info-using-clipboard_1258-57303.jpg">
+                    <h4>Jonathon Andrew</h4>
+                    <p>Founder</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="team-member text-center">
+                    <img class="img-circle" width="200" height="200" src=@Url.Content("https://image.freepik.com/free-photo/healthcare-workers-medicine-covid-19-pandemic-self-quarantine-concept-smiling-attractive-doctor-scrubs-glasses-stethoscope-neck-cross-arms-chest-ready-help-patients_1258-58772.jpg")>
+                    <h4>Adipisci Velit</h4>
+                    <p>Developer</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="team-member text-center">
+                    <img class="img-circle" width="200" height="200" src="@Url.Content("https://image.freepik.com/free-photo/healthcare-workers-prevent-virus-insurance-medicine-concept-smiling-attractive-female-doctor-nurse-blue-scrubs-pointing-fingers-left-show-patients-advertisement-important-info_1258-57267.jpg")">
+                    <h4>John Fexit</h4>
+                    <p>Shop Manager</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="team-member text-center">
+                    <img class="img-circle" width="200" height="200" src="https://image.freepik.com/free-photo/female-doctor-with-stethoscope-clipboard-looking-camera_114579-77935.jpg">
+                    <h4>John Fexit</h4>
+                    <p>Shop Manager</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="product-category section">
+    <div class=".container2">
+        <div class="row">
+            <div class="title">
+                <h2>
+                    What People Say About Us
+                </h2>
+            </div>
+        </div>
+
+        <div class="testimonials">
+            <ul>
+
+                @{ foreach (var test in Model.Item7)
+                    {
+                        <li>
+                            <img src="@test.Img">
+                            <p>"@test.ReviwMsg"</p>
+                            <h1>Martin Kovaks</h1>
+                        </li>
+                    }
+
+
+                }
+
+                <li>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkSflTI9DIJAstZ8fesrSz70HR8oH9BN_d8w0cjGEtiZyqDcs8">
+                    <p>"Integer in cursus massa. Curabitur viverra, libero sed eleifend pellentesque, metus quam commodo lorem, ut laoreet ipsum metus ac augue."</p>
+                    <h1>Martin Kovaks</h1>
+                </li>
+                <li>
+                    <img src="https://i.pinimg.com/236x/2d/e5/7f/2de57f8025bd64dffd554de0f080ee7f--my-pinterest-pinterest-board.jpg?b=t">
+                    <p>"Sed vitae augue arcu. In pharetra ultricies mi eget interdum. Donec feugiat, orci at mattis laoreet, mauris mauris interdum arcu, ac viverra nibh purus a eros."</p>
+                    <h1>Adrea Glauber</h1>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</section>
+
+
+
+<section class="product-category section">
+    <div class="contact-section">
+        <div class="container">
+            <div class="row">
+                <!-- Contact Form -->
+                <div class="contact-form col-md-6 ">
+                    <form id="contact-form" method="post" action="" role="form">
+
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" class="form-control" name="name" id="name">
+                        </div>
+
+                        <div class="form-group">
+                            <input type="email" placeholder="Your Email" class="form-control" name="email" id="email">
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" placeholder="Subject" class="form-control" name="subject" id="subject">
+                        </div>
+
+                        <div class="form-group">
+                            <textarea rows="6" placeholder="Message" class="form-control" name="message" id="message"></textarea>
+                        </div>
+
+                        <div id="mail-success" class="success">
+                            Thank you. The Mailman is on His Way :)
+                        </div>
+
+                        <div id="mail-fail" class="error">
+                            Sorry, don't know what happened. Try later :(
+                        </div>
+
+                        <div id="cf-submit">
+                            <input type="submit" id="contact-submit" class="btn btn-transparent" value="Submit">
+                        </div>
+
+                    </form>
+                </div>
+                <!-- ./End Contact Form -->
+                <!-- Contact Details -->
+                <!-- / End Contact Details -->
+
+                <div class="contact-details col-md-6 ">
+                    <div class="google-map">
+                        <div id="map"></div>
+                    </div>
+                    <ul class="contact-short-info">
+                        <li>
+                            <i class="tf-ion-ios-home"></i>
+                            <span>Khaja Road, Bayzid, Chittagong, Bangladesh</span>
+                        </li>
+                        <li>
+                            <i class="tf-ion-android-phone-portrait"></i>
+                            <span>Phone: +880-31-000-000</span>
+                        </li>
+                        <li>
+                            <i class="tf-ion-android-globe"></i>
+                            <span>Fax: +880-31-000-000</span>
+                        </li>
+                        <li>
+                            <i class="tf-ion-android-mail"></i>
+                            <span>Email: hello@example.com</span>
+                        </li>
+                    </ul>
+                    <!-- Footer Social Links -->
+                    <!--/. End Footer Social Links -->
+                </div>
+
+
+            </div> <!-- end row -->
+        </div> <!-- end container -->
+    </div>
+</section>
+
+
+

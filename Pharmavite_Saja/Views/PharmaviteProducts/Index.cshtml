@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Pharmavite_Saja.Models.PharmaviteProduct>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-md-8 d-block m-auto">
+    <div class="card">
+        <div class="card-header">
+            <h5 class="title">Delete</h5>
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ProductName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DateFrom)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DateTo)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Price)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ProductDesc)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ProductQuantity)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CategoryIdfkNavigation)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ProductName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DateFrom)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DateTo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Price)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ProductDesc)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ProductQuantity)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CategoryIdfkNavigation.CategoryId)
+                            </td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.ProductId">Edit</a> |
+                                <a asp-action="Details" asp-route-id="@item.ProductId">Details</a> |
+                                <a asp-action="Delete" asp-route-id="@item.ProductId">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

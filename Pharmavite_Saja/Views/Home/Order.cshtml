@@ -1,0 +1,181 @@
+﻿@model Pharmavite_Saja.Models.PharmaviteProduct
+
+@{ Layout = "~/Views/Shared/_web_Layout.cshtml";
+    
+    }
+<script src="@Url.Content("/lib/jquery/dist/jquery.min.js")"></script>
+
+<script>
+
+    $(document).ready(function () {
+        $('#product-modal').modal('show');
+        var maxQty = @Model.ProductQuantity;
+        $('.count').prop('disabled', true);
+        $(document).on('click', '.plus', function () {
+        console.log(maxQty, $('.count').val() )
+
+        if (parseInt($('.count').val()) == parseInt(maxQty)) {
+        console.log("max qty")
+        $('.count').val(parseInt(maxQty));
+        } else { $('.count').val(parseInt($('.count').val()) + 1); }
+        });
+        $(document).on('click', '.minus', function () {
+        $('.count').val(parseInt($('.count').val()) - 1);
+        if ($('.count').val() == 0) {
+        $('.count').val(1);
+        }
+        });
+        });
+
+        $(function () {
+        $("#btnPost").click(function () {
+        let Order = new Object();
+        Order.UserId = parseInt(@TempData["id"]);
+        Order.Qty = $('#qty').val();
+        Order.Sts = "order in progress";
+        Order.StartDate = null;
+        Order.delDate = null;
+        Order.productId = parseInt(@Model.ProductId);
+        console.log("..........");
+        console.log(JSON.stringify(Order));
+        console.log(typeof Order.productId);
+        console.log(typeof @Model.ProductId);
+
+        console.log(Order)
+        console.log(JSON.stringify(Order))
+
+        if (Order != null) {
+        setTimeout(() => {
+        console.log('Hello, Mr. Universe!');
+        $.ajax({
+        type: "POST",
+        url: "/Home/Orders",
+        data: Order,
+        dataType: "json",
+        success: function (data) {
+
+        console.log('Hello, Mr. Universe2!' + data);
+        var url = '@Url.Action("Cart", "Home")'
+        window.location.href = url;
+        },
+        error: function (data) {
+        console.log('Hello, Mr. Universe3!'+ data);
+        var url = '@Url.Action("Cart", "Home")'
+        window.location.href = url;
+        }
+        });
+        }, 1000);
+        }
+        });
+        });
+</script>
+
+
+<div class="col-md-9">
+    <div class="row">
+        <!-- Modal -->
+        <div class="modal product-modal fade" id="product-modal">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <i class="tf-ion-close"></i>
+            </button>
+            <div class="modal-dialog " role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-8 col-sm-6 col-xs-12">
+                                <div class="modal-image">
+                                    <img class="img-responsive" src="/CategoryImages/@Model.Productimg" alt="product-img" />
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6 col-xs-12">
+                                <div class="product-short-details">
+                                    <h2 class="product-title"> @Model.ProductName</h2>
+                                    <p class="product-price">$ @Model.Price</p>
+                                    <p class="product-short-description">
+                                        @Model.ProductDesc
+                                    </p>
+
+                                    <div class="qty mt-5">
+                                        <span class="minus">-</span>
+                                        <input type="number" class="count" id="qty" name="qty" value="1">
+                                        <span class="plus">
+                                            +
+                                        </span>
+
+                                    </div>
+
+                                    <a id="btnPost" class="btn btn-main">Add To Cart</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.modal -->
+
+    </div>
+</div>
+
+
+
+<section class="page-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="content">
+                    <h1 class="page-name">Shop</h1>
+                    <ol class="breadcrumb">
+                        <li><a href="index.html">Home</a></li>
+                        <li class="active">shop</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+<section class="products section">
+    <div class="container">
+        <div class="row">
+
+            @foreach (var item in ViewBag.Products)
+            {
+                <div class="col-md-3">
+                    <div class="product-item">
+                        <div class="product-thumb">
+                            <span class="bage">Sale</span>
+                            <img class="img-responsive" src="/CategoryImages/@item.Productimg" alt="product-img" />
+                            <div class="preview-meta">
+                                <ul>
+                                    <li>
+                                        <a asp-action="Order" asp-route-id="@item.ProductId">
+                                            <span data-toggle="modal" data-target="#product-modal">
+                                                <i class="tf-ion-ios-search-strong"></i>
+                                            </span>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="product-content">
+                            <h4><a href="product-single.html">@item.ProductName</a></h4>
+                            <p class="price">$  @item.Price</p>
+                        </div>
+                    </div>
+                </div>
+
+            }
+
+        </div>
+        <h2 class="badge badge-info">
+            <a asp-action="Index" style="text-decoration:none; color:white ;font-size:40px;">Back to Home</a>
+        </h2>
+    </div>
+
+</section>
+
